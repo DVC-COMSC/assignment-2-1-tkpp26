@@ -13,7 +13,7 @@ def main():
 
     print(f"The total number of students    \t {total}")
     print(f"The number of males and females \t {num_males}    \t {num_females}")
-    print(f"The total number of students    \t {m_perc:.2f} % \t {f_perc:.2f} %40")
+    print(f"The total number of students    \t {m_perc:.2f} % \t {f_perc:.2f} %")
 
     """
     ########################################
