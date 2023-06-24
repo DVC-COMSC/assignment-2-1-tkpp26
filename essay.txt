@@ -1,0 +1,85 @@
+Link to my file in GitHub Classroom Repository
+https://github.com/DVC-COMSC/assignment-2-1-tkpp26
+
+Problem Definition
+The purpose of this program is to calculate the percentage of male and female students registered in a class. The program prompts the user to input the number of male and female students, calculates the total number of students, and finds the percentage of males and females. 
+
+Input and Output Description
+Input: two integer values representing the number of males and females
+Output: Three integers representing the total number of students and the number of males and females, and two floating point numbers for the percentage of male and female students
+
+Explanation of Variables
+int num_males: user input for the number of male students
+int num_females: user input for the number of female students
+int total: the total of male and female students
+float m_perc: the percentage of male students
+float f_perc: the percentage of female students
+
+Errors and Lessons
+Errors
+Displaying Percentage
+Although I initially thought that explicitly converting num_males / total and num_females / total to a floating point using the built-in function float(), I figured that this was unnecessary as it is implicitly converted to a floating point number. I tested this using the python interpreter and checking the data type for each value using the function type(). This is shown in detail in the screenshot below.
+Use of f-strings
+		Initially, I wrote the code:
+		print(f"The total number of students " \t {total})
+		which resulted in the error message:
+“ print(f"The total number of students "   \t {total}    SyntaxError: unexpected character after line continuation character”
+I was slightly confused with using the f-strings, as I was used to writing in C++ in which a string is enclosed within a quotation mark, and as I was not yet familiar with inserting a variable within a string using {}. To fix this error, I enclosed the whole line within the quotation mark:
+print(f"The total number of students \t {total}")
+Using \t to format the output
+Using the escape character \t when formatting was something I tripped on as well. Initially, I was unsure where to insert \t but after much trials, I was able to figure out how to format the output. 
+	Lessons
+As there are various ways to format the numbers and the output on display, I would like to review what the most appropriate way of formatting is for various cases. 
+Through this assignment I have learnt that I will have to review the ways to format and make sure each time what data type a mathematical operation leads to. For example, I have learnt that when two integers are divided using the division operator, the result will be a float only if the division results in a non-integer quotient. Although, I believe that if the division results in an integer quotient, the result will be an integer, when I tested using the python interpreter, it resulted in a floating number. Hence, I would like to review and ask others why this is the case. 
+>>> num1 = 2
+>>> num2 = 1
+>>> print( num1/num2)
+2.0
+>>> nums = num1/num2
+>>> type(nums)
+<class 'float'>
+
+I have attached a screenshot describing what I learnt and encountered in the page below:
+
+# Assignment 2-1
+
+def main():
+    num_males = int(input("Enter the number of males: "))
+    num_females = int(input("Enter the number of females: "))
+    total = num_females + num_males
+		
+		"""
+		Since num_males / total and num_females / total implicitly convert two integers
+		into a floating point number, we do not need to use the float() built-in function
+		to explicitly convert it from integer to floating point numbers. Using the python
+		interpreter in the terminal, we can observe that that the data type of m_perc and
+		f_perc is indeed float without explicitly using the float() function:
+
+		>>> type(m_perc)
+		<class 'float'>
+		>>> type(f_perc)
+		<class 'float'>
+
+		We can be explicit with our conversion:
+		m_perc = float(num_males) / total * 100
+		f_perc = float(num_females) / total * 100
+
+		"""
+    m_perc = num_males / total * 100
+    f_perc = num_females / total * 100
+
+		""" 
+		An alternative way to write these print statements:
+		print("The total number of students", format(total, "15"))
+		print("The number of males and females", format(num_males, "11"), format(num_females, "12"))
+		print("The number is", format(m_perc, "32.2f"), format(f_perc, "12.2f"))
+		"""
+    print(f"The total number of students    \t {total}")
+    print(f"The number of males and females \t {num_males}    \t {num_females}")
+    print(f"The total number of students    \t {m_perc:.2f} % \t {f_perc:.2f} %")
+
+    return m_perc, f_perc
+
+
+if __name__ == '__main__':
+    main()
